@@ -1,4 +1,4 @@
-const logFn = {
+const logFns = {
   log: console.log,
   info: console.info,
   error: console.error,
@@ -15,14 +15,13 @@ function connect(url: string = 'http://localhost:12345') {
 }
 
 function onOpen(event: Event) {
-  console.log('this is', this)
-  log('LOCAL: Connection to remote log server opened')
+  logFns.info('LOCAL: Connection to remote log server opened')
   if (connectionTimer) clearInterval(connectionTimer)
   registerHandlers(this)
 }
 
 function onClose(error: any) {
-  log('LOCAL: Connection to remote log server closed')
+  logFns.info('LOCAL: Connection to remote log server closed')
   unregisterHandlers()
   connectionTimer = setInterval(() => connect(), 2500)
 }
@@ -33,19 +32,19 @@ function logger(connection: WebSocket, callback: Function, type: string, payload
 }
 
 function registerHandlers(connection: WebSocket) {
-  console.log = (...args: any[]) => logger(connection, log, 'log', args)
-  console.info = (...args: any[]) => logger(connection, info, 'info', args)
-  console.error = (...args: any[]) => logger(connection, error, 'error', args)
-  console.debug = (...args: any[]) => logger(connection, debug, 'debug', args)
-  console.trace = (...args: any[]) => logger(connection, trace, 'trace', args)
+  console.log = (...args: any[]) => logger(connection, logFns.log, 'log', args)
+  console.info = (...args: any[]) => logger(connection, logFns.info, 'info', args)
+  console.error = (...args: any[]) => logger(connection, logFns.error, 'error', args)
+  console.debug = (...args: any[]) => logger(connection, logFns.debug, 'debug', args)
+  console.trace = (...args: any[]) => logger(connection, logFns.trace, 'trace', args)
 }
 
 function unregisterHandlers() {
-  console.log = log
-  console.info = info
-  console.error = error
-  console.debug = debug
-  console.trace = trace
+  console.log = logFns.log
+  console.info = logFns.info
+  console.error = logFns.error
+  console.debug = logFns.debug
+  console.trace = logFns.trace
 }
 
 export default connect

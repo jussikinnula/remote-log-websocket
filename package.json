@@ -1,6 +1,6 @@
 {
   "name": "remote-log-websocket",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Remote log client/server implementation using WebSocket",
   "main": "lib/client.js",
   "types": "lib/client.d.ts",
@@ -24,7 +24,7 @@
     "prebuild:lib": "npm run clean && npm run lint",
     "build:lib": "tsc --outDir ./lib --declaration",
     "clean": "rimraf ./lib",
-    "lint": "tslint",
+    "lint": "tslint --project tsconfig.json",
     "start": "node lib/server.js"
   },
   "dependencies": {
