@@ -1,6 +1,6 @@
 {
   "name": "remote-log-websocket",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Remote log client/server implementation using WebSocket",
   "main": "lib/client.js",
   "types": "lib/client.d.ts",

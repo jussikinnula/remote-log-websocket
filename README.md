@@ -27,5 +27,5 @@ REMOTE_LOG_HOST=0.0.0.0 REMOTE_LOG_PORT=12345 remote-log
 ...or from your own NodeJS wrapper:
 
 ```js
-require('remote-log-websocket/server')()
+require('remote-log-websocket/server')('0.0.0.0', 12345)
 ```
