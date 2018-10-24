@@ -1,6 +1,6 @@
 {
   "name": "remote-log-websocket",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Remote log client/server implementation using WebSocket",
   "main": "lib/client.js",
   "types": "lib/client.d.ts",
@@ -16,8 +16,8 @@
     "remote-log": "bin/cli.js"
   },
   "engines": {
-    "node": "^8.11.1",
-    "npm": "^5.6.0"
+    "node": "^8.11.3",
+    "npm": "^6.4.1"
   },
   "scripts": {
     "build": "npm run build:lib",
