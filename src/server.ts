@@ -1,7 +1,7 @@
 import { server as WebSocketServer } from 'websocket'
 import * as express from 'express'
 
-export default (host: string, port: number) => {
+function startServer(host: string, port: number) {
   const app = express()
   const server = app.listen(port, host, () => {
     console.log(`Remote log server listening in http://${host}:${port}`)
@@ -26,3 +26,5 @@ export default (host: string, port: number) => {
     })
   })
 }
+
+module.exports = startServer

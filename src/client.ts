@@ -47,4 +47,4 @@ function unregisterHandlers() {
   console.trace = logFns.trace
 }
 
-export default connect
+module.exports = connect
