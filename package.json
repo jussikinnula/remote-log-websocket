@@ -1,9 +1,9 @@
 {
   "name": "remote-log-websocket",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Remote log client/server implementation using WebSocket",
-  "main": "lib/client.js",
-  "types": "lib/client.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/jussikinnula/react-touch-zoom-pan-canvas"

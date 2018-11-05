@@ -8,7 +8,14 @@ const logFunctions: any = {
 
 let reconnect: any = null
 
-function connect(url: string = 'ws://localhost:12345') {
+const STATUS_NOT_CONNECTED = 'STATUS_CONNECTING'
+const STATUS_CONNECTING = 'STATUS_CONNECTING'
+const STATUS_CONNECTED = 'STATUS_CONNECTED'
+let status = STATUS_NOT_CONNECTED
+
+export function connect(url: string = 'ws://localhost:12345') {
+  if (status === STATUS_CONNECTING) return
+  status = STATUS_CONNECTING
   logFunctions.info(`LOCAL: Trying to connect to remote log server ${url.toString()}`)
   const connection = new WebSocket(url)
   connection.onopen = onOpen
@@ -16,12 +23,14 @@ function connect(url: string = 'ws://localhost:12345') {
 }
 
 function onOpen(event: Event) {
+  status = STATUS_CONNECTED
   logFunctions.info('LOCAL: Connection to remote log server opened')
   if (reconnect) clearInterval(reconnect)
   registerHandlers(this)
 }
 
 function onClose(error: any) {
+  status = STATUS_NOT_CONNECTED
   logFunctions.info('LOCAL: Connection to remote log server closed')
   unregisterHandlers()
   reconnect = setInterval(() => connect(), 2500)
@@ -47,5 +56,3 @@ function unregisterHandlers() {
   console.debug = logFunctions.debug
   console.trace = logFunctions.trace
 }
-
-export default connect
