@@ -8,7 +8,8 @@ const logFunctions: any = {
 
 let reconnect: any = null
 
-function connect(url: string = 'http://localhost:12345') {
+function connect(url: string = 'ws://localhost:12345') {
+  logFunctions.info(`LOCAL: Trying to connect to remote log server ${url.toString()}`)
   const connection = new WebSocket(url)
   connection.onopen = onOpen
   connection.onclose = onClose
