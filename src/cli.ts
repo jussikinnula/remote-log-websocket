@@ -1,5 +1,5 @@
 import * as program from 'commander'
-import startServer from './startServer'
+import server from './server'
 
 const VERSION = require('../package.json').version
 const HOST = process.env.REMOTE_LOG_HOST || 'localhost'
@@ -14,7 +14,7 @@ program
   .option('-P, --port [port]', 'Set port for HTTP/WebSocket server', PORT)
   .action((command: any) => {
     const { host, port } = command
-    startServer(host, port)
+    server(host, port)
   })
 
 // Default to command start
