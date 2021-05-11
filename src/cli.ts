@@ -1,9 +1,9 @@
 import * as program from 'commander'
 import server from './server'
 
-const VERSION = require('../package.json').version
-const HOST = process.env.REMOTE_LOG_HOST || 'localhost'
-const PORT = process.env.REMOTE_LOG_PORT ? parseInt(process.env.REMOTE_LOG_PORT, 10) : 12345
+const VERSION: string = require('../package.json').version
+const HOST: string = process.env.REMOTE_LOG_HOST || 'localhost'
+const PORT: string = process.env.REMOTE_LOG_PORT || '12345'
 
 program.version(VERSION)
 
